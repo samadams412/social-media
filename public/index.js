@@ -9,9 +9,10 @@ const displayUsers = async function() {
 const renderAllUsers = async (data) => {
     const userContainer = document.querySelector('.user-container');
     let userHeader = document.createElement('h1');
+    userContainer.innerHTML = ""
     userHeader.textContent = "Users in the Database:"
     userContainer.append(userHeader);
-    userContainer.innerHTML = ""
+    
     for(let i = 0; i < data.length; i++) {
         let userNames = document.createElement('p');
         let userEmails = document.createElement('p');
