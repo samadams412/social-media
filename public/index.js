@@ -1,19 +1,24 @@
 const displayUsers = async function() {
     const response = await fetch("/api/users");
     const userData = await response.json();
-    renderUsers(userData);
+    console.log(userData);
+    renderAllUsers(userData);
     return;
 }
 
-const renderUsers = async (data) => {
+const renderAllUsers = async (data) => {
     const userContainer = document.querySelector('.user-container');
     let userHeader = document.createElement('h1');
     userHeader.textContent = "Users in the Database:"
     userContainer.append(userHeader);
     for(let i = 0; i < data.length; i++) {
         let userNames = document.createElement('p');
-        userNames.textContent = data[i].username;
-        userContainer.append(userNames);
+        let userEmails = document.createElement('p');
+        let userDivider = document.createElement('p');
+        userNames.textContent = "Username: " + data[i].username;
+        userEmails.textContent = "Email: " + data[i].email;
+        userDivider.classList.add('divider');
+        userContainer.append(userNames, userEmails, userDivider);
     }
 }
 
