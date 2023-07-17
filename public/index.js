@@ -9,18 +9,22 @@ const displayUsers = async function() {
 const renderAllUsers = async (data) => {
     const userContainer = document.querySelector('.user-container');
     let userHeader = document.createElement('h1');
+    //clear innerHTML so clicking the display user button will not duplicate
     userContainer.innerHTML = ""
+    let userList = document.createElement('ul');
     userHeader.textContent = "Users in the Database:"
-    userContainer.append(userHeader);
+    userContainer.append(userHeader, userList);
     
     for(let i = 0; i < data.length; i++) {
-        let userNames = document.createElement('p');
-        let userEmails = document.createElement('p');
-        let userDivider = document.createElement('p');
-        userNames.textContent = "Username: " + data[i].username;
-        userEmails.textContent = "Email: " + data[i].email;
+        let userName = document.createElement('li');
+        let userEmail = document.createElement('li');
+        let userId = document.createElement('li');
+        let userDivider = document.createElement('div');
+        userName.textContent = "Username: " + data[i].username;
+        userEmail.textContent = "Email: " + data[i].email;
+        userId.textContent = "userId: " + data[i]._id;
         userDivider.classList.add('divider');
-        userContainer.append(userNames, userEmails, userDivider);
+        userList.append(userName, userEmail, userId, userDivider);
     }
     
 }
