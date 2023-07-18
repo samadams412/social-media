@@ -14,6 +14,10 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "/public/main.html"))
 })
 
+app.get("/createUser", (req, res) => {
+  res.sendFile(path.join(__dirname, "/public/createUser.html"))
+})
+
 app.use(routes);
 
 db.once('open', () => {
