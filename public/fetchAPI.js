@@ -11,8 +11,11 @@ const deleteUser = async function(e) {
     });
     const userData = await response.json();
     console.log(userData);
+    if(response.ok){
+
+        document.location.replace("/");
+    }
     
-    return;
 }
 
 userContainer.addEventListener("click", deleteUser);
